@@ -4,20 +4,20 @@
 <table border="1">
 	<tr>
 		<th>ID</th>
-		<th>ID PELELANG</th>
-		<th>FKK BARANG</th>
+		<th>NAMA BARANG</th>
 		<th>KOMENTAR</th>
+		<th>NAMA LENGKAP</th>
 		<th></th>
 	</tr> 
 	<?php 
-	foreach ($dataAdmin as $komentar){
+	foreach ($dataKomentar as $komentar){
 		echo "<tr>
 			<td>$komentar->id_komentar</td> 
-			<td>$komentar->id_pelelang</td> 
-			<td>$komentar->fkk_barang</td> 
-			<td>$komentar->komentar</td>
-			<td>".anchor('komentar/edit/'.$komentar->id_admin, 'Edit')." 
-			".anchor('komentar/delete/'.$komentar->id_admin, 'Delete')."
+			<td>$komentar->nama_barang</td> 
+			<td>$komentar->komentar</td> 
+			<td>$komentar->nama_lengkap</td>
+			<td>".anchor('komentar/edit/'.$komentar->id_komentar, 'Edit')." 
+			".anchor('komentar/delete/'.$komentar->id_komentar, 'Delete')."
 			</td>
 			</tr>";
 	}

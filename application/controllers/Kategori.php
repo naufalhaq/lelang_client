@@ -1,14 +1,15 @@
 <?php
 
-class Kontak extends CI_Controller {
+class Kategori extends CI_Controller {
 
 	var $API = "";
 
 	public function __construct()
 	{
 		parent::__construct();
+		ini_set('max_execution_time', 0); ini_set('memory_limit','2048M');
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_client/index.php";
+		$this->API="http://localhost/lelangbang/lelang_server/index.php";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');

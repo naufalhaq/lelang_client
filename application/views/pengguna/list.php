@@ -18,8 +18,8 @@
 			<td>$pengguna->username</td> 
 			<td>$pengguna->password</td>
 			<td>$pengguna->alamat</td>
-			<td>".anchor('admin/edit/'.$admin->id_admin, 'Edit')." 
-			".anchor('admin/delete/'.$admin->id_admin, 'Delete')."
+			<td>".anchor('pengguna/edit/'.$pengguna->id_pengguna, 'Edit')." 
+			".anchor('pengguna/delete/'.$pengguna->id_pengguna, 'Delete')."
 			</td>
 			</tr>";
 	}

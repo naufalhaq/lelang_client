@@ -8,7 +8,7 @@ class Barang extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_client/index.php";
+		$this->API="http://localhost/lelangbang/lelang_server/index.php";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
