@@ -8,7 +8,7 @@ class Pengguna extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_server/index.php";
+		$this->API="http://localhost:8000";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');

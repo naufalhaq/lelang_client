@@ -7,9 +7,9 @@ class Kategori extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		ini_set('max_execution_time', 0); ini_set('memory_limit','2048M');
+		// ini_set('max_execution_time', 0); ini_set('memory_limit','2048M');
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_server/index.php";
+		$this->API="http://localhost:8000";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
@@ -70,7 +70,7 @@ class Kategori extends CI_Controller {
 		if (empty($id)) {
 			redirect('kategori');
 		} else {
-			$delete = $this->curl->simple_delete($this->API.'/kategori', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+			$delete = $this->curl->simple_delete($this->API.'/kategori', array('id_kategori'=>$id), array(CURLOPT_BUFFERSIZE => 10));
 			if ($delete) {
 				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
 			} else {

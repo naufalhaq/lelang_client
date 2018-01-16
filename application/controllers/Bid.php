@@ -8,7 +8,7 @@ class Bid extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_server/index.php";
+		$this->API="http://localhost:8000";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
@@ -29,7 +29,7 @@ class Bid extends CI_Controller {
 			'up_bid' => $this->input->post('up_bid'),
 			'fk_pengguna' => $this->input->post('fk_pengguna'),
 			'tanggal' => $this->input->post('tanggal'), 
-			'barang' => $this->input->post('barang')
+			'barang' => $this->input->post('fk_barang')
 		);
 		$insert = $this->curl->simple_post($this->API.'/bid', $data, array(CURLOPT_BUFFERSIZE => 10));
 			if ($insert) {
@@ -37,7 +37,8 @@ class Bid extends CI_Controller {
 			} else {
 				$this->session->flashdata('hasil', 'Insert Data Gagal');
 			}
-			redirect('bid');
+			//redirect('bid');
+			var_dump($_POST);
 		} else {
 			$this->load->view('bid/create');
 		}		
@@ -61,7 +62,7 @@ class Bid extends CI_Controller {
 			}
 			redirect('bid');
 		} else {
-			$params = array('id'=> $this->uri->segment(3));
+			$params = array('id_bid'=> $this->uri->segment(3));
 			$data['dataBid'] = json_decode($this->curl->simple_get($this->API.'/bid', $params));
 			$this->load->view('bid/edit',$data);
 		}
@@ -73,7 +74,7 @@ class Bid extends CI_Controller {
 		if (empty($id)) {
 			redirect('bid');
 		} else {
-			$delete = $this->curl->simple_delete($this->API.'/bid', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+			$delete = $this->curl->simple_delete($this->API.'/bid', array('id_bid'=>$id), array(CURLOPT_BUFFERSIZE => 10));
 			if ($delete) {
 				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
 			} else {

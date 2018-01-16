@@ -1,14 +1,23 @@
+<?php $this->load->view('partial/header') ?>
+
+<div class="container">
+
+<?php $this->load->view('partial/nav') ?>
+
 <font color="orange"> 
 <?php echo $this->session->flashdata('hasil'); ?>
 </font> 
-<table border="1">
+<table class="table table-bordered">
+<a  class="btn btn-info" href="<?= base_url('bid/create') ?>">+ Tambah data </a>
+<br>
+<br>
 	<tr>
 		<th>ID</th>
 		<th>NAMA BARANG</th>
 		<th>UP BID</th>
 		<th>NAMA LENGKAP</th>
 		<th>TANGGAL</th>
-		<th></th>
+		<th>Opsi</th>
 	</tr> 
 	<?php 
 	foreach ($dataBid as $bid){
@@ -25,4 +34,3 @@
 	}
 	?>
 	</table> 
-	<a href="http://localhost/lelangbang/lelang_client/index.php/bid/create">+ Tambah data </a>

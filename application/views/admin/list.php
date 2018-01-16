@@ -1,7 +1,14 @@
+<?php $this->load->view('partial/header') ?>
+
+<div class="container">
+
+<?php $this->load->view('partial/nav') ?>
+
+
 <font color="orange"> 
 <?php echo $this->session->flashdata('hasil'); ?>
 </font> 
-<table border="1">
+<table class="table">
 	<tr>
 		<th>ID</th>
 		<th>USERNAME</th>
@@ -25,4 +32,4 @@
 	}
 	?>
 	</table> 
-	<a href="http://localhost/lelangbang/lelang_client/index.php/admin/create">+ Tambah data </a>
+	<a href="<?= base_url() ?>admin/create">+ Tambah data </a>

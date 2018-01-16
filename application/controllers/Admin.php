@@ -8,7 +8,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_server/index.php";
+		$this->API="http://localhost:8000";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
@@ -61,7 +61,7 @@ class Admin extends CI_Controller {
 			}
 			redirect('admin');
 		} else {
-			$params = array('id'=> $this->uri->segment(3));
+			$params = array('id_admin'=> $this->uri->segment(3));
 			$data['dataAdmin'] = json_decode($this->curl->simple_get($this->API.'/admin', $params));
 			$this->load->view('admin/edit',$data);
 		}
@@ -73,7 +73,7 @@ class Admin extends CI_Controller {
 		if (empty($id)) {
 			redirect('admin');
 		} else {
-			$delete = $this->curl->simple_delete($this->API.'/admin', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+			$delete = $this->curl->simple_delete($this->API.'/admin', array('id_admin'=>$id), array(CURLOPT_BUFFERSIZE => 10));
 			if ($delete) {
 				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
 			} else {

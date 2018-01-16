@@ -1,16 +1,40 @@
+<?php $this->load->view('partial/header') ?>
+
+<div class="container">
+
+<?php $this->load->view('partial/nav') ?>
+
 <?php echo form_open_multipart('bid/create');?> 
-<table>
-	<tr><td>ID</td><td><?php echo form_input('id_bid');?></td></tr> 
-	<tr><td>NAMA BARANG</td><td><?php echo form_input('nama_barang');?></td></tr> 
-	<tr><td>UP BID</td><td><?php echo form_input('up_bid');?></td></tr> 
-	<tr><td>NAMA LENGKAP</td><td><?php echo form_input('nama_lengkap');?></td></tr> 
-	<tr><td>TANGGAL</td><td><?php echo form_input('tanggal');?></td></tr>
-	<tr><td colspan="2">
-		<?php echo form_submit('submit','Simpan');?> 
-		<?php echo anchor('admin','Kembali');?>
-	</td></tr>
-</table>
+
+		<div class="form-group">
+			<label>Nama Barang</label>
+			<input  name="nama_barang" type="text" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>Up Bid</label>
+			<input  name="up_bid" type="number" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>Nama Lengkap</label>
+			<input  name="fk_pengguna" type="number" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>Tanggal</label>
+			<input  name="tanggal" type="date" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>Nama Lengkap</label>
+			<input  name="fk_barang" type="number" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<input type="submit" class="btn btn-primary" name="submit">
+		</div>
 
 <?php 
 echo form_close(); 
- ?>
+?>

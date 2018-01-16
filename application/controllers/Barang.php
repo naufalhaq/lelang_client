@@ -8,7 +8,7 @@ class Barang extends CI_Controller {
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/lelangbang/lelang_server/index.php";
+		$this->API="http://localhost:8000/";
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
@@ -38,6 +38,7 @@ class Barang extends CI_Controller {
 				$this->session->flashdata('hasil', 'Insert Data Gagal');
 			}
 			redirect('barang');
+			// var_dump($_POST);
 		} else {
 			$this->load->view('barang/create');
 		}		
@@ -61,7 +62,7 @@ class Barang extends CI_Controller {
 			}
 			redirect('barang');
 		} else {
-			$params = array('id'=> $this->uri->segment(3));
+			$params = array('id_barang'=> $this->uri->segment(3));
 			$data['dataBarang'] = json_decode($this->curl->simple_get($this->API.'/barang', $params));
 			$this->load->view('barang/edit',$data);
 		}
@@ -73,7 +74,7 @@ class Barang extends CI_Controller {
 		if (empty($id)) {
 			redirect('barang');
 		} else {
-			$delete = $this->curl->simple_delete($this->API.'/barang', array('id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+			$delete = $this->curl->simple_delete($this->API.'/barang', array('id_barang'=>$id), array(CURLOPT_BUFFERSIZE => 10));
 			if ($delete) {
 				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
 			} else {
